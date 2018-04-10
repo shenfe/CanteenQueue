@@ -1,18 +1,24 @@
-# chinesemess
+# Chinesemess
 
-Something about Chinese language.
+Something really complicated about Chinese language...
 
-## spider
+## Spider
 
-The spider crawls Chinese characters with basic explanations from [zdic.net](http://www.zdic.net).
+The spiders crawl data from [汉典网](http://www.zdic.net).
 
-### dependencies
+### Dependencies
 
-`scrapy`
+* Python3
 
-### commands
+    ```bash
+    $ pip install scrapy
+    ```
+
+    If the OS is Windows, it requires [pywin32](https://github.com/mhammond/pywin32) perhaps. Install it by `pip install pywin32`.
+
+### Commands
 
 ```bash
-$ scrapy runspider src/list_spider.py -o src/data/list.json -s FEED_EXPORT_ENCODING='utf-8'
-$ scrapy runspider src/dict_spider.py -o src/data/dict.json -s FEED_EXPORT_ENCODING='utf-8'
+$ scrapy runspider src/list_spider.py -o src/data/list.json -s FEED_EXPORT_ENCODING='utf-8' # Step1: fetch the list of Chinese characters
+$ scrapy runspider src/dict_spider.py -o src/data/dict.json -s FEED_EXPORT_ENCODING='utf-8' # Step2: fetch the dictionary
 ```
