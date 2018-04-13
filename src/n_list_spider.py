@@ -4,9 +4,15 @@ import scrapy
 domain = 'http://www.zdic.net'
 
 
+def req_pinyin_list(i, callback):
+    return scrapy.Request(
+        url='http://www.zdic.net/c/cipy/'
+    )
+
+
 def req_list(i, callback):
     return scrapy.Request(
-        url='http://www.zdic.net/z/zb/?n1=ty&n2=' + str(i),
+        url='http://www.zdic.net/c/cipy/',
         headers={
             'Accept': ['text/javascript', 'text/html', 'application/xml', 'text/xml', '*/*'],
             'X-Requested-With': 'XMLHttpRequest',
