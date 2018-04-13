@@ -1,12 +1,6 @@
 import scrapy
 
 
-def req_list(i, callback):
-    return scrapy.Request(
-        url='http://www.zdic.net/c/cipy/'
-    )
-
-
 class Spider(scrapy.Spider):
     name = 'pinyin_list'
     start_urls = [
@@ -14,8 +8,8 @@ class Spider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        for quote in response.css('a'):
+        for item in response.css('div.pyul dl'):
             yield {
-                'word': quote.xpath('text()').extract_first(),
-                'link': domain + quote.xpath('@href').extract_first().replace('/js/', '/xs/')
+                'pinyin': item.css('dt a::text').extract_first(),
+                'word': item.css('dd a::text').extract_first()
             }
